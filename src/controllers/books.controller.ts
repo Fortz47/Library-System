@@ -34,6 +34,27 @@ class BooksController {
     }
   }
 
+  protected async deleteBook(req: Request, res: Response, next: NextFunction) {
+    try {
+      const bookId = parseInt(req.params.id);
+      const deleteBook = await BooksService.deleteBook((bookId - 1));
+      if(deleteBook) {
+        res.status(200).send({
+          message: 'Book deleted successfully',
+          book: deleteBook
+        });
+      } else {
+        res.status(404).send({
+          message: 'request failed, book not found'
+        })
+      }  
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+
   protected async InsertBook(req: Request, res: Response, next: NextFunction) {
     try{
       const {

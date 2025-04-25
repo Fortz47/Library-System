@@ -12,7 +12,16 @@ class BooksService {
     if(id > Books.length || id < 0) {
       return false
     }
-    const book = Books[(id)];
+    const book = Books[id];
+    return book;
+  }
+
+  public deleteBook(id: number) {
+    if(id > Books.length || id < 0) {
+      return false
+    }
+    const book = Books[id];
+    Books.splice(id, 1);
     return book;
   }
 

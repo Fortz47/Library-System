@@ -22,10 +22,17 @@ class BooksRoutes extends BooksController {
       .post(
         this.InsertBook
       );
+
       this.router
       .route('/:id')
       .get(
         this.getBookWithId
+      );
+
+      this.router
+      .route('/:id')
+      .delete(
+        this.deleteBook
       );
   }
 }
