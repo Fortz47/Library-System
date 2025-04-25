@@ -5,7 +5,7 @@ class BooksController {
 
   protected async getBooks(req: Request, res: Response, next: NextFunction) {
     try {
-      const allBooks = BooksService.getAllBooks()
+      const allBooks = await BooksService.getAllBooks()
       res.status(200).send({
         message: 'books successful',
         ...allBooks
@@ -18,7 +18,7 @@ class BooksController {
   protected async getBookWithId(req: Request, res: Response, next: NextFunction) {
     try {
       const bookId = parseInt(req.params.id);
-      const book = BooksService.findBook((bookId - 1));
+      const book = await BooksService.findBook((bookId - 1));
       if(book) {
         res.status(200).send({
           message: 'successful',
@@ -39,7 +39,7 @@ class BooksController {
       const {
         body: { name, author, pages },
       } = req;
-      let insertBook = BooksService.InsertBook(name, author, pages);
+      let insertBook = await BooksService.InsertBook(name, author, pages);
       if(insertBook) {
         res.status(201).send({
           message: 'Book Inserted successfully',
