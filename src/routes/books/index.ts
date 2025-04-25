@@ -92,8 +92,8 @@ class BooksRoutes extends BooksController {
        *         required: true
        *         description: ID of the book to retrieve
        *         schema:
-       *           type: string
-       *           example: 123abc
+       *           type: integer
+       *           example: 12
        *     responses:
        *       200:
        *         description: Book found and returned successfully
@@ -132,8 +132,8 @@ class BooksRoutes extends BooksController {
        *         required: true
        *         description: ID of the book to delete
        *         schema:
-       *           type: string
-       *           example: 123abc
+       *           type: integer
+       *           example: 12
        *     responses:
        *       200:
        *         description: Book deleted successfully
@@ -166,8 +166,8 @@ class BooksRoutes extends BooksController {
        *         required: true
        *         description: ID of the book to update
        *         schema:
-       *           type: string
-       *           example: 123abc
+       *           type: integer
+       *           example: 12
        *     requestBody:
        *       required: true
        *       content:
