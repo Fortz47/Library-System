@@ -12,15 +12,32 @@ class BooksRoutes extends BooksController {
 
   private routes(): void {
     /**
-     * @swagger
-     * /books:
-     *   get:
-     *     summary: Get all books
-     *     description: Returns a list of all books
-     *     responses:
-     *       200:
-     *       description: A list of books
-     */
+       * @swagger
+       * /books/:
+       *   get:
+       *     summary: Get all books
+       *     description: Returns a list of all books
+       *     responses:
+       *       200:
+       *         description: Books returned successfully
+       *         content:
+       *           application/json:
+       *             schema:
+       *               type: object[]
+       *               properties:
+       *                 message:
+       *                   type: string
+       *                   example: Book added successfully
+       *                 book:
+       *                   type: object
+       *                   properties:
+       *                     name:
+       *                       type: string
+       *                     author:
+       *                       type: string
+       *                     pages:
+       *                       type: integer
+       */
     this.router
       .route('/')
       .get(
@@ -54,7 +71,7 @@ class BooksRoutes extends BooksController {
        *                 type: integer
        *                 example: 180
        *     responses:
-       *       200:
+       *       201:
        *         description: Book added successfully
        *         content:
        *           application/json:

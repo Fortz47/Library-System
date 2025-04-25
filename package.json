@@ -21,6 +21,7 @@
     "sequelize": "^6.37.7",
     "sqlite": "^5.1.1",
     "swagger-jsdoc": "^6.2.8",
+    "swagger-markdown": "^2.3.2",
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {

@@ -17,7 +17,7 @@ class Routes {
         },
       });
     });
-    this.router.use('api/v1/books', BooksRoute);
+    this.router.use('/books', BooksRoute);
   }
 }
 
