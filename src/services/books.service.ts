@@ -8,6 +8,11 @@ class BooksService {
     return { books: books};
   }
 
+  public findBook(id: number) {
+    const book = Books[(id - 1)];
+    return book;
+  }
+
   public InsertBook(name: string, author: string, pages: number) {
     const lengthOfBook = Books.length;
     const newBook = {

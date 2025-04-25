@@ -15,6 +15,19 @@ class BooksController {
     }
   }
 
+  protected async getBookWithId(req: Request, res: Response, next: NextFunction) {
+    try {
+      const bookId = req.params.id;
+      const book = BooksService.findBook(parseInt(bookId));
+      res.status(200).send({
+        message: 'successful',
+        book: book
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   protected async InsertBook(req: Request, res: Response, next: NextFunction) {
     try{
       const {
