@@ -2,6 +2,7 @@ import express from 'express';
 import routes from './routes';
 import morgan from 'morgan';
 import {config} from 'dotenv';
+import { swaggerUi, swaggerSpec } from './swagger';
 
 class App {
   public server;
@@ -16,6 +17,7 @@ class App {
 
   private initializeMiddlewaresAndRoutes() {
     this.server.use(express.json());
+    this.server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
     this.server.use(routes);
     this.server.use(morgan('dev'));
   }
