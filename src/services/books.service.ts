@@ -9,7 +9,10 @@ class BooksService {
   }
 
   public findBook(id: number) {
-    const book = Books[(id - 1)];
+    if(id > Books.length || id < 0) {
+      return false
+    }
+    const book = Books[(id)];
     return book;
   }
 

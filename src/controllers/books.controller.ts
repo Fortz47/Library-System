@@ -17,12 +17,18 @@ class BooksController {
 
   protected async getBookWithId(req: Request, res: Response, next: NextFunction) {
     try {
-      const bookId = req.params.id;
-      const book = BooksService.findBook(parseInt(bookId));
-      res.status(200).send({
-        message: 'successful',
-        book: book
-      });
+      const bookId = parseInt(req.params.id);
+      const book = BooksService.findBook((bookId - 1));
+      if(book) {
+        res.status(200).send({
+          message: 'successful',
+          book: book
+        });
+      } else {
+        res.status(404).send({
+          message: 'request failed, book not found'
+        })
+      }  
     } catch (error) {
       next(error);
     }
