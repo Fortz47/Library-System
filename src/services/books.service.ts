@@ -16,6 +16,17 @@ class BooksService {
     return book;
   }
 
+  public updateBook(id: number, name: string, author: string, pages: number) {
+    if(id > Books.length || id < 0) {
+      return false
+    }
+    const book = Books[id];
+    book.author = author;
+    book.name = name;
+    book.pages = pages;
+    return book;
+  }
+
   public deleteBook(id: number) {
     if(id > Books.length || id < 0) {
       return false

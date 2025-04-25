@@ -34,6 +34,12 @@ class BooksRoutes extends BooksController {
       .delete(
         this.deleteBook
       );
+
+      this.router
+      .route('/:id')
+      .put(
+        this.updateBook
+      );
   }
 }
 

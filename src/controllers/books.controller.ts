@@ -54,6 +54,28 @@ class BooksController {
     }
   }
 
+  protected async updateBook(req: Request, res: Response, next: NextFunction) {
+    try {
+      const {
+        body: { name, author, pages },
+      } = req;
+      const bookId = parseInt(req.params.id);
+      const updatedBook = await BooksService.updateBook((bookId - 1), name, author, pages);
+      if(updatedBook) {
+        res.status(200).send({
+          message: 'Book updated successfully',
+          book: updatedBook
+        });
+      } else {
+        res.status(404).send({
+          message: 'request failed, book not found'
+        })
+      }  
+
+    } catch (error) {
+      next(error);
+    }
+  }
 
   protected async InsertBook(req: Request, res: Response, next: NextFunction) {
     try{
