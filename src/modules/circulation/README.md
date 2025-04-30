@@ -4,7 +4,15 @@ Base URL: `/api/v1/circulation`
 
 ---
 
-## 📚 1. Borrowing a Book
+## 1. Display all transactions
+
+Gets all transactions without filter
+
+### `GET /api/v1/circulation/transactions`
+
+---
+
+## 📚 2. Borrowing a Book
 
 Issue a book to a user, recording the issue date and due date.
 
@@ -40,7 +48,7 @@ Issue a book to a user, recording the issue date and due date.
 
 ---
 
-## 🔁 2. Returning a Book
+## 🔁 3. Returning a Book
 
 Mark a book as returned and update inventory.
 
@@ -69,7 +77,7 @@ Mark a book as returned and update inventory.
 
 ---
 
-## 🔄 3. Renewing a Book
+## 🔄 4. Renewing a Book
 
 Extend the due date for a borrowed book.
 
