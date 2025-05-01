@@ -1,7 +1,7 @@
 import express from 'express';
 import routes from './routes';
 import morgan from 'morgan';
-import {config} from 'dotenv';
+import { config } from 'dotenv';
 import { swaggerUi, swaggerSpec } from './swagger';
 
 class App {
@@ -22,13 +22,11 @@ class App {
     this.server.use(morgan('dev'));
   }
 
-
   public start() {
     this.server.listen(this.port, () => {
       console.log(`Server is running on port ${this.port}`);
     });
   }
-
 }
 
 export const app = new App();
