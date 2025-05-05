@@ -1,20 +1,20 @@
 // // import fs from 'fs';
 // const fs = require('fs');
 
-// function readAndProcessFile(filePath, callback) {
-//   fs.readFile(filePath, 'utf8', (error, data) => {
-//     if (error) {
-//       return callback(error);
-//     }
-//     let turnToUpperCase = data.toUpperCase();
-//     fs.writeFile('uppercase.txt', turnToUpperCase, (error) => {
-//       if (error) {
-//         return callback(error);
-//       }
-//       callback(null, 'The file has been written successfully!');
-//     });
-//   });
-// }
+function readAndProcessFile(filePath, callback) {
+  fs.readFile(filePath, 'utf8', (error, data) => {
+    if (error) {
+      return callback(error);
+    }
+    let turnToUpperCase = data.toUpperCase();
+    fs.writeFile('uppercase.txt', turnToUpperCase, (error) => {
+      if (error) {
+        return callback(error);
+      }
+      callback(null, 'The file has been written successfully!');
+    });
+  });
+}
 
 // // readAndProcessFile('test.txt', (err, message) => {
 // //   if (err) {
