@@ -11,7 +11,9 @@ class TestRoutes {
   }
 
   private routes(): void {
-    this.router.route('/').get();
+    this.router.route('/').get((req, res) => {
+      res.status(200).send({ message: 'Test route is working!' });
+    });
   }
 }
 

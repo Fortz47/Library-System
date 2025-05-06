@@ -18,7 +18,7 @@ class App {
 
   private initializeMiddlewaresAndRoutes() {
     this.server.use(express.json());
-    this.server.use(systemMiddleware.check);
+    // this.server.use(systemMiddleware.check);
     this.server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
     this.server.use(routes);
     this.server.use(morgan('dev'));
