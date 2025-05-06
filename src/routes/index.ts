@@ -18,11 +18,11 @@ class Routes {
         }
       });
     });
-    this.router.use([
-      systemMiddleware.bookMiddleware,
-      systemMiddleware.checkBook,
-      systemMiddleware.checkBookId
-    ]);
+    // this.router.use([
+    //   systemMiddleware.bookMiddleware,
+    //   systemMiddleware.checkBook,
+    //   systemMiddleware.checkBookId
+    // ]);
     this.router.use('/books', BooksRoute);
   }
 }
