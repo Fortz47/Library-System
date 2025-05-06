@@ -39,7 +39,7 @@ class BooksRoutes extends BooksController {
      *                     pages:
      *                       type: integer
      */
-    this.router.route('/').get(this.getBooks, systemMiddleware.bookMiddleware);
+    this.router.route('/').get(this.getBooks);
 
     /**
      * @swagger

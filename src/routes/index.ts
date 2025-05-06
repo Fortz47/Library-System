@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import BooksRoute from './books';
+import testRoute from './test/test.route';
 import systemMiddleware from '../middleware';
 
 class Routes {
@@ -24,6 +25,7 @@ class Routes {
     //   systemMiddleware.checkBookId
     // ]);
     this.router.use('/books', BooksRoute);
+    this.router.use('/test', testRoute);
   }
 }
 
