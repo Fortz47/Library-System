@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import BooksRoute from './books';
+import systemMiddleware from '../middleware';
 
 class Routes {
   public router: Router;
@@ -13,10 +14,15 @@ class Routes {
       res.status(200).json({
         message: 'Welcome to my Library System Clone',
         data: {
-          version: '1.0.0',
-        },
+          version: '1.0.0'
+        }
       });
     });
+    this.router.use([
+      systemMiddleware.bookMiddleware,
+      systemMiddleware.checkBook,
+      systemMiddleware.checkBookId
+    ]);
     this.router.use('/books', BooksRoute);
   }
 }
