@@ -1,10 +1,10 @@
 import express, { Request, Response } from 'express';
-// import User from '../db/models/user.model';
+import Users from '../db/user.db';
 // import authMidlleware from '../middleware/auth.will';
 
 class AuthController {
   public async login(req: Request, res: Response): Promise<any> {
-    return res.status(200).json({ message: 'Login successful' });
+    res.status(200).send({ message: 'Login successful' });
     // try {
     //   const { email, password } = req.body;
     //   const user = await User.findOne({ where: { email } });

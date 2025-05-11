@@ -1,4 +1,4 @@
-import BooksAttributeI from '../interfaces/books.interfaces';
+import BooksAttributeI from '../interfaces/books.interface';
 
 const Books: BooksAttributeI[] = [
   {
