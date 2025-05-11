@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import BooksRoute from './books';
 import testRoute from './test/test.route';
+import authRoute from './auth/auth.routes';
 import systemMiddleware from '../middleware';
 
 class Routes {
@@ -26,6 +27,7 @@ class Routes {
     // ]);
     this.router.use('/books', BooksRoute);
     this.router.use('/test', testRoute);
+    this.router.use('/auth', authRoute);
   }
 }
 
