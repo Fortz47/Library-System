@@ -1,8 +1,7 @@
 import { Router, Request, Response } from 'express';
 import BooksRoute from './books';
 import testRoute from './test/test.route';
-import authRoute from './auth/auth.routes';
-import systemMiddleware from '../middleware';
+import authRoute from './auth';
 
 class Routes {
   public router: Router;
