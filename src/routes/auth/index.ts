@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import AuthController from '../../controllers/auth.controller';
-import AuthenticationMiddleware from '../../middleware/auth/auth.middleware';
 
 class AuthRoutes extends AuthController {
   public router: Router;
