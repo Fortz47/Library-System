@@ -1,21 +1,23 @@
 import Users from '../../db/user.db';
-// import jwt from 'jsonwebtoken';
+import UserAttributeI from '../../interfaces/user.interface';
+import jwt from 'jsonwebtoken';
 
 class AuthService {
   constructor() {}
 
-  //   public async login(user) {
-  //     // extract the password for the user information //
-  //     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  //     const { password, ...userWithoutPassword } = user.toJSON();
-  //     const payloadUser = userWithoutPassword;
+  public async login(user: UserAttributeI | undefined) {
+    // extract the password for the user information //
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-  //     // generate an access token for the new user //
-  //     const accessToken = this.generateAccessToken(payloadUser);
-
-  //     // return the new information //
-  //     return { user: userWithoutPassword, accessToken };
-  //   }
+    if (user) {
+      const { password, ...userWithoutPassword } = user;
+      const payloadUser = userWithoutPassword;
+      // generate an access token for the new user //
+      const accessToken = this.generateAccessToken(payloadUser);
+      // return the new information //
+      return { user: userWithoutPassword, accessToken };
+    }
+  }
 
   public checkUserExistAndPasswordMatch(email: string, password: string) {
     const user = Users.find((user) => email === user.email);
@@ -29,9 +31,10 @@ class AuthService {
     return false;
   }
 
-  public async getUserForLogin(email: string, password: string) {
+  public getUserForLogin(email: string, password: string) {
     // find the user //
     const user = Users.find((user) => email === user.email && password === user.password);
+
     return user;
   }
 
@@ -72,16 +75,16 @@ class AuthService {
   //   }
 
   // put a pin on this one //
-  //   private generateAccessToken(user: Partial<User>) {
-  //     // generate the access token and then send it out - input the payload, the secrete and the options you want //
-  //     const accessToken = jwt.sign({ ...user }, 'secret', {
-  //       // algorithm: 'RS256',
-  //       expiresIn: '10h'
-  //     });
+  private generateAccessToken(user: Partial<UserAttributeI>) {
+    // generate the access token and then send it out - input the payload, the secrete and the options you want //
+    const accessToken = jwt.sign({ ...user }, 'secret', {
+      // algorithm: 'RS256',
+      expiresIn: '10h'
+    });
+    // return the accessToken //
+    return accessToken;
+  }
 
-  //     // return the accessToken //
-  //     return accessToken;
-  //   }
   private validatePassword(id: number, password: string): boolean {
     try {
       // check if teh password is correct //
@@ -91,14 +94,7 @@ class AuthService {
       throw new Error('Error validation password at the moment');
     }
   }
-  //   private async updateLastLogin(user: User): Promise<void> {
-  //     await user.set('lastLogin', new Date()).save();
-  //   }
 }
 
-//   private async updateLastLogin(user: User): Promise<void> {
-//     await user.set('lastLogin', new Date()).save();
-//   }
-// }?
 const authService = new AuthService();
 export default authService;

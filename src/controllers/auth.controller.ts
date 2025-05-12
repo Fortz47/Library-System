@@ -18,12 +18,11 @@ class AuthController {
         });
       } else {
         const user = authService.getUserForLogin(email, password);
-        res.status(200).send({ messageeme: user });
-        // const data = await authService.login(user);
-        // res.status(200).send({
-        //   message: 'Logged in successful',
-        //   data
-        // });
+        const data = authService.login(user);
+        res.status(200).send({
+          message: 'Logged in successful',
+          data
+        });
       }
     } catch (error) {
       throw new Error(`Error in authenticate create controller method:${error}`);
