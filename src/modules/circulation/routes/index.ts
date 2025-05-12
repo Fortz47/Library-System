@@ -1,5 +1,7 @@
 import {  Router } from 'express';
-import CirculationRouter from './circulation';
+import BorrowRouter from './borrow';
+import ReturnRouter from './return';
+import RenewRouter from './renew';
 
 class Routes {
     private router: Router;
@@ -9,12 +11,15 @@ class Routes {
         this.initializeRoutes();
     }
 
-    public getRouter() {
+    getRouter() {
         return this.router;
     }
 
     private initializeRoutes() {
-        this.router.use('/circulation', CirculationRouter);
+        // Initialize routes for circulation module
+        this.router.use('/circulation/borrow', BorrowRouter);
+        this.router.use('/circulation/return', ReturnRouter);
+        this.router.use('/circulation/renew', RenewRouter);
     }
 }
 

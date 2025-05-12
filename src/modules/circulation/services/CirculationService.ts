@@ -1,8 +1,11 @@
-import { CirculationModel } from "../models/TransactionModel";
-import { ICirculationTransaction } from "../interfaces/circulation";
+import { Itransaction } from "../interfaces/transaction";
 
 class CirculationService {
-    private transactions: typeof CirculationModel = CirculationModel;
+    private transactions: Itransaction[];
+
+    constructor(transactions: Itransaction[] = []) {
+        this.transactions = transactions;
+    }
 
     public getAllTransactions() {
         return this.transactions;
@@ -12,15 +15,16 @@ class CirculationService {
         return this.transactions.find(transaction => transaction.id === id);
     }
 
-    public addTransaction(transaction: ICirculationTransaction) {
+    public addTransaction(transaction: Itransaction) {
         this.transactions.push(transaction);
         return transaction;
     }
 
-    public updateTransaction(id: number, updatedTransaction: Partial<ICirculationTransaction>) {
+    public updateTransaction(id: number, updatedTransaction: Partial<Itransaction>) {
         // Find the transaction by ID and update it with the new data
         const index = this.transactions.findIndex(transaction => transaction.id === id);
         if (index !== -1) {
+            //@ts-ignore
             this.transactions[index] = { ...this.transactions[index], ...updatedTransaction };
             return this.transactions[index];
         }
@@ -36,4 +40,4 @@ class CirculationService {
     }
 }
 
-export const circulationService = new CirculationService();
+export default CirculationService;
