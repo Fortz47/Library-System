@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import Users from '../db/user.db';
 import authService from '../services/auth/auth.service';
-// import authMidlleware from '../middleware/auth.will';
+import authMidlleware from '../middleware/auth/auth.middleware';
 
 class AuthController {
   protected async login(req: Request, res: Response, next: NextFunction) {
@@ -30,15 +30,23 @@ class AuthController {
     }
   }
 
-  //   public async register(req: Request, res: Response): Promise<any> {
-  //     try {
-  //       let { firstName, lastName, email, password } = req.body;
-  //       const user = await User.create({ firstName, lastName, email, password });
-  //       return res.json({ user, token: authMidlleware.generateToken(user.id) });
-  //     } catch (error) {
-  //       return res.status(400).json({ message: 'User creation failed', me: 'check your inputs' });
-  //     }
-  //   }
+  public register(req: Request, res: Response, next: NextFunction) {
+    try {
+      // check if the user exist //
+      const userExist = Users.find((user) => user.email === req.body.email);
+      // if the user exist throw an error //
+      if (userExist) {
+        res.status(409).send({ message: 'User already exist' });
+      }
+      // // create a new user //
+      const user = { ...req.body, id: Users.length + 1 };
+      Users.push(user);
+      //generate an access token for the new user //
+      res.send({ user, token: authMidlleware.generateToken(user.email) });
+    } catch (error) {
+      res.status(400).send({ message: 'User creation failed', me: 'check your inputs' });
+    }
+  }
 }
 
 export default AuthController;

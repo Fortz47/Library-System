@@ -13,9 +13,7 @@ class AuthRoutes extends AuthController {
   private routes(): void {
     this.router.route('/login').post(this.login);
 
-    // this.router
-    //   .route('/register')
-    //   .post(systemMiddleware.validateRequestBody(authValidator.register), this.register);
+    this.router.route('/register').post(this.register);
   }
 }
 

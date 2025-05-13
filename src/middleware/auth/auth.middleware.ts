@@ -1,6 +1,5 @@
-// import authService from '../services/auth/auth.service';
-// import userService from '../services/user.service';
 import { NextFunction, Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
 
 class AuthenticationMiddleware {
   public async validateUserAccess(req: Request, res: Response, next: NextFunction) {
@@ -34,6 +33,10 @@ class AuthenticationMiddleware {
       res.status(401).json({ message: 'Unauthorized access' });
       next(error);
     }
+  }
+
+  public generateToken(userEmail: string) {
+    return jwt.sign({ userEmail }, 'secret', { expiresIn: '10h' });
   }
 }
 
