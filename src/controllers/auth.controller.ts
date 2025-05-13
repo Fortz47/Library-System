@@ -39,7 +39,7 @@ class AuthController {
         res.status(409).send({ message: 'User already exist' });
       }
       // // create a new user //
-      const user = { ...req.body, id: Users.length + 1 };
+      const user = { ...req.body, id: Users.length + 1, isAdmin: false };
       Users.push(user);
       //generate an access token for the new user //
       res.send({ user, token: authMidlleware.generateToken(user.email) });
