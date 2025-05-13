@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 class AuthService {
   constructor() {}
 
-  public async login(user: UserAttributeI | undefined) {
+  public login(user: UserAttributeI | undefined) {
     // extract the password for the user information //
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
