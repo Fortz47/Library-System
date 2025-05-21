@@ -33,6 +33,7 @@
     "@types/luxon": "^3.6.2",
     "@types/node": "^22.15.16",
     "@types/sequelize": "^4.28.20",
+    "mysql2": "^3.14.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   }
